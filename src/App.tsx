@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react"
+
 import "./global.css"
 
 import { Header } from "./components/Header"
@@ -7,25 +9,42 @@ import { Input } from "./components/Input"
 import { Button } from "./components/Button"
 import { LettersUsed } from "./components/LettersUsed"
 
+import { WORDS, type Challenge } from "./utils/words"
+
 import styles from "./app.module.css"
 
 export function App() {
+  const [challenge, setChallenge] = useState<Challenge | null>(null)
+
+  function startGame() {
+    const randomIndex = Math.floor(Math.random() * WORDS.length)
+    const randomWord = WORDS[randomIndex]
+
+    setChallenge(randomWord)
+  }
+
   function restartGame() {
     alert("Reiniciando o jogo...")
+  }
+
+  useEffect(() => {
+    startGame()
+  }, [])
+
+  if (!challenge) {
+    return
   }
 
   return (
     <div className={styles.container}>
       <main>
         <Header current={1} max={10} onRestart={restartGame} />
-        <Tip />
+        <Tip tip={challenge.tip} />
 
         <div className={styles.word}>
-          <Letter value="R" />
-          <Letter value="E" />
-          <Letter value="A" />
-          <Letter value="C" />
-          <Letter value="T" />
+          {challenge.word.split("").map((letter, index) => (
+            <Letter value="" key={index} />
+          ))}
         </div>
 
         <div className={styles.guess}>

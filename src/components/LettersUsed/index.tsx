@@ -10,7 +10,6 @@ export function LettersUsed() {
       <div>
         <Letter value="A" size="small" color="correct" />
         <Letter value="B" size="small" color="wrong" />
-        <Letter value="C" size="small" />
       </div>
     </div>
   )
