@@ -3,6 +3,7 @@ import "./global.css"
 import { Header } from "./components/Header"
 import { Tip } from "./components/Tip"
 import { Letter } from "./components/Letter"
+import { Input } from "./components/Input"
 
 import styles from "./app.module.css"
 
@@ -23,6 +24,12 @@ export function App() {
           <Letter value="A" />
           <Letter value="C" />
           <Letter value="T" />
+        </div>
+
+        <div>
+          <h4>Palpite</h4>
+
+          <Input maxLength={1} placeholder="?" />
         </div>
       </main>
     </div>

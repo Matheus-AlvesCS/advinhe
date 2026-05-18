@@ -1,0 +1,15 @@
+.input {
+  height: 2.875rem;
+  width: 2.875rem;
+  border-radius: 0.5rem;
+
+  background-color: #ebebfc;
+  border: 2px solid #4f4fb9;
+  outline: none;
+
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
