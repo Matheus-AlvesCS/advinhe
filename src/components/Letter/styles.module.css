@@ -14,3 +14,25 @@
   font-size: 2rem;
   font-weight: 700;
 }
+
+.small {
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: 0.5rem;
+
+  font-size: 1.25rem;
+  font-weight: 500;
+  border: 1px solid #6363db;
+}
+
+.correct {
+  background-color: #e1f5ec;
+  border: 1px solid #03ab4f;
+  color: #03ab4f;
+}
+
+.wrong {
+  background-color: #ffcf62;
+  border: 1px solid #691b0a;
+  color: #000;
+}
