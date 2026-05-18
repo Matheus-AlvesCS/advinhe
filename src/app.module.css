@@ -24,3 +24,16 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+.guess {
+  & > h4 {
+    margin-bottom: 0.75rem;
+    color: #32325f;
+    font: 1.125rem;
+    font-weight: 600;
+  }
+
+  & > button {
+    margin-left: 0.75rem;
+  }
+}
