@@ -27,12 +27,12 @@
 
 .correct {
   background-color: #e1f5ec;
-  border: 1px solid #03ab4f;
+  border-color: #03ab4f;
   color: #03ab4f;
 }
 
 .wrong {
   background-color: #ffcf62;
-  border: 1px solid #691b0a;
+  border-color: #691b0a;
   color: #000;
 }

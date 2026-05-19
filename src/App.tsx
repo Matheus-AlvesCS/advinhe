@@ -19,6 +19,8 @@ export function App() {
   const [lettersUsed, setLettersUsed] = useState<LettersUsedProps[]>([])
   const [score, setScore] = useState(0)
 
+  const ATTEMPTS_MARGIN = 5
+
   function startGame() {
     const randomIndex = Math.floor(Math.random() * WORDS.length)
     const randomWord = WORDS[randomIndex]
@@ -47,7 +49,15 @@ export function App() {
       return alert("Você já utilizou essa letra!")
     }
 
-    setLettersUsed((prev) => [...prev, { value, correct: false }])
+    const hits = challenge.word
+      .split("")
+      .filter((char) => char.toUpperCase() === value).length
+
+    const correct = hits > 0
+    const currentScore = score + hits
+
+    setLettersUsed((prev) => [...prev, { value, correct }])
+    setScore(currentScore)
     setLetter("")
   }
 
@@ -66,13 +76,27 @@ export function App() {
   return (
     <div className={styles.container}>
       <main>
-        <Header current={1} max={10} onRestart={restartGame} />
+        <Header
+          current={lettersUsed.length}
+          max={challenge.word.length + ATTEMPTS_MARGIN}
+          onRestart={restartGame}
+        />
         <Tip tip={challenge.tip} />
 
         <div className={styles.word}>
-          {challenge.word.split("").map((letter, index) => (
-            <Letter value="" key={index} />
-          ))}
+          {challenge.word.split("").map((letter, index) => {
+            const letterUsed = lettersUsed.find(
+              (used) => used.value.toUpperCase() === letter.toUpperCase(),
+            )
+
+            return (
+              <Letter
+                value={letterUsed?.value}
+                color={letterUsed?.correct ? "correct" : "default"}
+                key={index}
+              />
+            )
+          })}
         </div>
 
         <div className={styles.guess}>
