@@ -28,6 +28,7 @@ export function App() {
     setChallenge(randomWord)
 
     setLetter("")
+    setLettersUsed([])
     setScore(0)
   }
 
@@ -61,6 +62,11 @@ export function App() {
     setLetter("")
   }
 
+  function endGame(message: string) {
+    alert(message)
+    startGame()
+  }
+
   function restartGame() {
     alert("Reiniciando o jogo...")
   }
@@ -68,6 +74,24 @@ export function App() {
   useEffect(() => {
     startGame()
   }, [])
+
+  useEffect(() => {
+    if (!challenge) {
+      return
+    }
+
+    const max_attempts = challenge.word.length + ATTEMPTS_MARGIN
+
+    setTimeout(() => {
+      if (score === challenge.word.length) {
+        return endGame("Parabéns! Você venceu!")
+      } else if (lettersUsed.length === max_attempts) {
+        return endGame(
+          "Que pena! você perdeu, a palavra era: " + challenge.word,
+        )
+      }
+    }, 500)
+  }, [score, lettersUsed])
 
   if (!challenge) {
     return
