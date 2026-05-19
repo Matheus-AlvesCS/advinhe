@@ -68,7 +68,11 @@ export function App() {
   }
 
   function restartGame() {
-    alert("Reiniciando o jogo...")
+    const confirm = window.confirm("Tem certeza que deseja reiniciar o jogo?")
+
+    if (confirm) {
+      startGame()
+    }
   }
 
   useEffect(() => {
